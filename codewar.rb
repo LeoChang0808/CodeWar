@@ -1,10 +1,16 @@
-def spin_words(string)
+def square_digits num
   result = []
-  string.split(" ").each do |i|
-    i.length < 5 ? result << i : result << i.reverse
+  num.to_s.split("").each do |i|
+    result << i.to_i ** 2
   end
-  result.join(" ")
+  result.join.to_i
 end
 
-spin_words("Hey fellow warriors")
-# "Hey wollef sroirraw"
+square_digits(3212)
+# 9414
+square_digits(2112)
+# 4114
+square_digits(1111)
+# 1111
+square_digits(1234321)
+# 14916941
