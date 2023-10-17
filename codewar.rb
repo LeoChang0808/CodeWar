@@ -1,16 +1,14 @@
-def square_digits num
-  result = []
-  num.to_s.split("").each do |i|
-    result << i.to_i ** 2
-  end
-  result.join.to_i
+def find_it(seq)
+  result = 0
+  seq.each { |x| result ^= x }
+  result
 end
 
-square_digits(3212)
-# 9414
-square_digits(2112)
-# 4114
-square_digits(1111)
-# 1111
-square_digits(1234321)
-# 14916941
+p find_it([20,1,-1,2,-2,3,3,5,5,1,2,4,20,4,-1,-2,5])
+# 5
+find_it([1,1,2,-2,5,2,4,4,-1,-2,5])
+# -1
+find_it([20,1,1,2,2,3,3,5,5,4,20,4,5])
+# 5
+find_it([10])
+# 10
