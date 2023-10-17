@@ -1,7 +1,10 @@
-def disemvowel(str)
-  str.split(/[aeiouAEIOU]/).join
+def spin_words(string)
+  result = []
+  string.split(" ").each do |i|
+    i.length < 5 ? result << i : result << i.reverse
+  end
+  result.join(" ")
 end
 
-disemvowel("This website is for losers LOL!")
-
-# "Ths wbst s fr lsrs LL!"
+spin_words("Hey fellow warriors")
+# "Hey wollef sroirraw"
