@@ -1,13 +1,13 @@
-def digital_root(n)
-  n.digits.sum > 9 ? digital_root(n.digits.sum) : n.digits.sum
+def narcissistic?(value)
+  value == value.digits.map { |x| x ** value.digits.length}.sum
 end
 
 
-p digital_root(16)
-# 7
-p digital_root(942)
-# 6
-p digital_root(132189)
-# 6
-p digital_root(493193)
-# 2
+narcissistic?(5)
+# true
+
+narcissistic?( 153 )
+# true
+
+narcissistic?( 1633 )
+# false
