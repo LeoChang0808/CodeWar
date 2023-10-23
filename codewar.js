@@ -1,18 +1,8 @@
-function rgb(r, g, b){
-  return [r,g,b].map( i => 
-    { return Math.min ( Math.max(i, 0), 255)
-      .toString(16).padStart(2,"0").toUpperCase()
-    }).join("")
+function accum(s) {
+		return s.toLowerCase().split("").map((x,i) => {
+		return x.toUpperCase()+x.repeat(i)
+	}).join("-")
 }
 
-console.log(rgb(0, 0, 0));
-// '000000'
-
-rgb(0, 0, -20)
-// '000000'
-
-rgb(300,255,255)
-// 'FFFFFF'
-
-rgb(173,255,47)
-// 'ADFF2F'
+accum("ZpglnRxqenU")
+// "Z-Pp-Ggg-Llll-Nnnnn-Rrrrrr-Xxxxxxx-Qqqqqqqq-Eeeeeeeee-Nnnnnnnnnn-Uuuuuuuuuuu"
