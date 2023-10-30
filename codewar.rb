@@ -1,18 +1,19 @@
-def pig_it text
-  text.split(" ").map{ | word |
-    if word.match?(/\p{Alpha}/)
-      word.slice(1..-1) + word[0] + "ay"
-    else
-      word
-    end
-  }.join(" ")
+def rgb(r, g, b)
+  number = [ r, g, b ].map do |x|
+    [0, [x, 255].min].max
+  end
+  result = number.map do |x|
+    x.to_s(16).rjust(2,"0").upcase()
+  end
+  result.join
 end
 
-p pig_it('Pig latin is cool')
-# 'igPay atinlay siay oolcay'
 
-p pig_it('This is my string')
-# 'hisTay siay ymay tringsay'
-
-p pig_it('Quis custodiet ipsos custodes ?')
-# 'uisQay ustodietcay psosiay ustodescay ?'
+rgb(0, 0, 0)
+# '000000'
+rgb(0, 0, -20)
+# '000000'
+rgb(300,255,255)
+# 'FFFFFF'
+rgb(173,255,47)
+# 'ADFF2F'
