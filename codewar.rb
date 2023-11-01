@@ -1,9 +1,24 @@
-def ipsBetween(start, ending)
-  result = start.split(".").map{|n| n.to_i}.zip(ending.split(".").map{|n| n.to_i}).map{|x,y| x - y}
-  result.zip([256**3,256**2,256,1]).map{|x,y| x * y}.sum.abs
+def generateHashtag(str)
+  strArr = str.split(" ")
+  if strArr.all?{ |e| e !~ /[a-zA-Z]/ }
+    false
+  elsif strArr.join.size >= 140
+    false
+  else
+    strArr.unshift("#").map{ |w| w.capitalize }.join
+  end
 end
 
-ipsBetween("10.0.0.0", "10.0.0.50")
-# 50
-ipsBetween("20.0.0.10", "20.0.1.0")
-# 246
+
+generateHashtag("")
+# false
+generateHashtag(" " * 200)
+# false
+generateHashtag("Do We have A Hashtag")
+# "#DoWeHaveAHashtag"
+generateHashtag("Codewars")
+# "#Codewars"
+generateHashtag("Codewars Is Nice")
+# "#CodewarsIsNice"
+generateHashtag("Codewars is nice")
+# "#CodewarsIsNice"
