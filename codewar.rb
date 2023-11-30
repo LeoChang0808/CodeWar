@@ -1,24 +1,15 @@
-def generateHashtag(str)
-  strArr = str.split(" ")
-  if strArr.all?{ |e| e !~ /[a-zA-Z]/ }
-    false
-  elsif strArr.join.size >= 140
-    false
-  else
-    strArr.unshift("#").map{ |w| w.capitalize }.join
+def unique_in_order(iterable)
+  result = []
+  iterable = iterable.split("") if iterable.is_a?(String)
+  iterable.each_with_index do |e, i|
+    result << e if i == 0 || e != iterable[i - 1]
   end
+  result
 end
 
-
-generateHashtag("")
-# false
-generateHashtag(" " * 200)
-# false
-generateHashtag("Do We have A Hashtag")
-# "#DoWeHaveAHashtag"
-generateHashtag("Codewars")
-# "#Codewars"
-generateHashtag("Codewars Is Nice")
-# "#CodewarsIsNice"
-generateHashtag("Codewars is nice")
-# "#CodewarsIsNice"
+unique_in_order('AAAABBBCCDAABBB')
+# ['A','B','C','D','A','B']
+unique_in_order([1,2,2,3,3])
+# [1,2,3]
+unique_in_order(["a", "b"])
+# ["a", "b"]
