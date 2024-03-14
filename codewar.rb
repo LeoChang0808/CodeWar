@@ -1,15 +1,12 @@
-def unique_in_order(iterable)
-  result = []
-  iterable = iterable.split("") if iterable.is_a?(String)
-  iterable.each_with_index do |e, i|
-    result << e if i == 0 || e != iterable[i - 1]
-  end
-  result
+def dig_pow(n, p)
+  sum = n.to_s.chars.map(&:to_i).each_with_index.reduce(0){ | acc, (n,i) | acc + n**(p+i) }
+  sum % n == 0 ? sum / n : -1
 end
 
-unique_in_order('AAAABBBCCDAABBB')
-# ['A','B','C','D','A','B']
-unique_in_order([1,2,2,3,3])
-# [1,2,3]
-unique_in_order(["a", "b"])
-# ["a", "b"]
+p dig_pow(89, 1)
+# 1
+p dig_pow(92, 1)
+# -1
+
+p dig_pow(46288, 3)
+# 51
